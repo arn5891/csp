@@ -1,18 +1,18 @@
-#all code written by [insert pseudonym here] unless stated otherwise
+#all code written by AN unless stated otherwise
 import math
+gens = ("II", "III", "IV")
 def get_average(lst, ind):
     counts = [["¬", -100]]
     for j in lst:
         found = False
         for i in counts:
-                    
-            if j[ind] in i[0] or i[0] in j[ind]:
+            if j[ind] == i[0] or (j[ind] not in gens and (i[0] in j[ind])): #found item that already exists, add to its count
                 i[1] = i[1]+1
                 found = True
         if found == False:
             counts.append([j[ind],1])
-    
-    max = [0,0]
+            
+    max = ["¬", -100]
     for i in counts:
         if i[1] > max[1]:
             max = i
@@ -20,7 +20,7 @@ def get_average(lst, ind):
     
 def check_input(string, spec):
     a = input(string)
-    if a == None:
+    if a == "":
         print("Please try again.")
         a = check_input(string, spec)
     if spec == 1:
@@ -31,37 +31,36 @@ def check_input(string, spec):
         except:
             pass
     elif spec[0] == 0:
-
         try:
             a = int(a)
         except:
             print(f"Data type of input is {type(a)} when int expected.\nTry again.")
             a = check_input(string, spec)
-        
         if a < spec[1][0] or a > spec[1][1]:
             print(f"Error: input not within range of {spec[1][0]}-{spec[1][1]}.")
             a = check_input(string, spec)
     return a
 
-gens = ("II", "III", "IV")
 
-def Spartan(fireteam):
+def Spartan():
     name = check_input("\nInput name of Spartan: ", 1)
     tag = input("Input tag(numbers and letters only): ")
     generation = check_input("Input generation of Spartan(2-4): ", (0,(2,4)))
     color = check_input("Input armor color of Spartan: ", 1)
     weapon = check_input("Spartan's weapon of choice: ", 1)
-    return (name, tag, gens[generation-2], color, weapon, fireteam)
+    return (name, tag, gens[generation-2], color, weapon)
 
 all = []
-print("Welcome to Halo Fireteam Generator.\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠖⠋⠁⢀⡟⢿⠛⠛⠛⠋⠉⠉⠉⠛⢻⠛⡆⠀⠉⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢎⣥⡖⠀⢀⣀⣼⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⢳⣀⡀⠀⠰⡦⡙⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠟⠋⠉⠁⢀⡏⠳⣾⠀⠀⠀⠀⠀⠀⠤⠀⢾⠖⠙⡆⠈⠉⠉⠻⣿⣾⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡼⠼⠓⠒⠂⠀⠀⣿⣆⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⣠⡟⠀⠀⠒⠒⠚⠧⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢠⠞⠉⠀⠀⠀⠀⠀⠀⠀⢸⠀⠹⡧⣤⣤⣤⣤⣤⣤⣤⣤⡤⡟⠁⣇⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣀⣤⣴⠶⠶⠛⠛⠛⠯⢽⡾⠿⠿⢿⣿⣿⣿⣿⣿⢿⣿⣷⠾⠿⠛⠛⠻⠶⠶⣦⣤⣀⠀⢳⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀ ⠀⠀⠀⣸⠾⠿⣥⣤⠤⠔⠒⠒⠂⠈⠉⠉⢉⠉⡀⠈⠉⠉⠉⠉⢉⣉⣉⠉⡀⠐⠒⠒⠲⠦⢤⣬⠿⠽⢾⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢰⡇⠀⡰⠋⣀⣤⠄⠒⠒⠊⢉⡩⠥⠀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⢍⡉⠁⠒⠒⠢⢤⣀⡉⢢⢀⣈⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢹⠛⣷⣿⠁⠱⢄⠀⢀⠔⠉⠀⠀⢀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠈⠲⢄⠀⣀⠼⠁⢹⣿⡟⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣧⠀⠀⠀⠈⠁⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢦⡀⠀⠀⠉⠀⠀⠀⢸⣿⠀⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣿⠀⠀⠀⢀⡤⠒⠚⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠒⠤⡀⠀⠀⠀⣌⣿⠀⣻⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣼⣀⣿⣯⣇⠀⠀⠘⣆⠀⠀⠀⠀do whatever.  ⢀⠇⠀⠀⢠⣿⣿⣀⣸⡀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣾⣿⣯⣿⠻⡝⢦⡀⠀⠈⠑⢤⣀⣀⣀⡴⠀⠀⠀⠀⠀⠀⢢⣀⣀⣀⣠⠔⠁⠀⠀⣰⢿⠟⢻⣩⣿⣿⡄⠀⠀⠀⠀⠀\n⣖⣶⣾⣿⣿⣿⣿⣿⡟⣧⠀⠈⠲⣝⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⢞⡷⠁⠀⢸⡿⣾⣿⣭⣿⣿⣷⣶⣶\n⡟⣉⣉⡁⢸⣿⣿⣿⣹⡿⣄⠀⠀⠈⠢⣉⠲⢄⡀⠀⢀⠔⢋⣉⣉⣉⣉⣉⠲⣄⠀⢀⣠⠖⢋⠴⠋⠀⠀⢠⡿⣿⣽⣿⣿⣿⣋⣉⣙⣿\n⣩⣿⣿⣿⣿⣛⣿⢿⣦⣀⣿⡧⣄⠀⠀⠈⠙⠒⠬⣙⣳⣶⣟⣾⣷⣲⣿⣿⣷⣞⣋⠩⠔⠊⠁⠀⠀⢀⠴⣿⣄⣠⡿⢿⣟⣿⣿⣿⣿⣽\n⡿⠏⠁⠀⠀⠀⠀⠀⣘⣿⣿⣿⣮⡳⡄⠀⠀⠀⠀⠀⠈⠙⣿⠉⠉⠉⠉⢹⡏⠁⠀⠀⠀⠀⠀⢀⢔⣡⣾⣿⣿⣏⠀⠀⠀⠀⠀⠀⠉⠿\n⣁⣀⣠⣤⣴⣾⣿⡉⠀⣿⠙⢿⣿⣽⣟⠄⠀⠀⠀⠀⣠⣴⣿⣄⣀⣀⣀⣸⣧⣄⠀⠀⠀⠀⠀⢿⣿⣿⣿⠟⡿⠈⠉⣷⣶⣦⣤⣄⣀⣀\n⢉⣿⣿⣟⣿⣿⣿⣷⡀⠘⡄⠀⢻⡿⣟⠀⠀⠀⣠⠞⠁⡏⠉⠉⠉⠉⠉⠉⢹⠇⠑⢄⠀⠀⠀⣨⣿⡟⠁⠀⡗⢀⣴⣿⣿⣿⣿⣿⣾⣿\n⡸⢿⣿⣿⣀⣤⣿⣟⣻⠄⠃⠀⢸⡇⠉⠻⢿⣏⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⣩⣴⠟⠋⠀⡇⠀⣸⠁⢾⡛⠻⠥⣀⣽⣿⡿⢻\n⠑⣤⣉⠤⠜⠛⠉⠁⠀⠀⠘⡄⢸⡇⠀⣤⠾⠋⠑⢄⠀⢣⠀⠀⠀⠀⠀⠀⢸⠀⣠⠞⠙⠻⣦⡀⢨⡇⢠⠃⠀⠀⠀⠉⠒⠢⠤⣉⣧⣾\n⣼⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣼⣿⡧⣤⡟⠀⠀⠀⠀⠑⣾⡷⠶⠶⠶⠶⣶⣿⡋⠁⠀⠀⠀⢹⣇⡼⣿⠯⠤⠤⠤⣤⣤⣤⢤⣤⣬⣭⣿\n⠈⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋⠳⣄⣿⡐⣦⣤⣀⣼⡟⠀⠀⠀⠀⠀⠀⠹⣷⢀⣠⣴⢲⣿⣯⠖⠁⠀⠀⠀⠀⣸⣟⣿⠀⣟⢛⣃⢹")
-print("Input the roster for a team of Spartan super-soldiers, including \ntheir: \n- name\n- tag(numbers and letters)\n- generation(2-4)\n- armor color\n- weaponry")
+print("Welcome to Halo Fireteam Generator.\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠖⠋⠁⢀⡟⢿⠛⠛⠛⠋⠉⠉⠉⠛⢻⠛⡆⠀⠉⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢎⣥⡖⠀⢀⣀⣼⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⢳⣀⡀⠀⠰⡦⡙⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠟⠋⠉⠁⢀⡏⠳⣾⠀⠀⠀⠀⠀⠀⠤⠀⢾⠖⠙⡆⠈⠉⠉⠻⣿⣾⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡼⠼⠓⠒⠂⠀⠀⣿⣆⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⣠⡟⠀⠀⠒⠒⠚⠧⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢠⠞⠉⠀⠀⠀⠀⠀⠀⠀⢸⠀⠹⡧⣤⣤⣤⣤⣤⣤⣤⣤⡤⡟⠁⣇⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣀⣤⣴⠶⠶⠛⠛⠛⠯⢽⡾⠿⠿⢿⣿⣿⣿⣿⣿⢿⣿⣷⠾⠿⠛⠛⠻⠶⠶⣦⣤⣀⠀⢳⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀ ⠀⠀⠀⣸⠾⠿⣥⣤⠤⠔⠒⠒⠂⠈⠉⠉⢉⠉⡀⠈⠉⠉⠉⠉⢉⣉⣉⠉⡀⠐⠒⠒⠲⠦⢤⣬⠿⠽⢾⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢰⡇⠀⡰⠋⣀⣤⠄⠒⠒⠊⢉⡩⠥⠀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⢍⡉⠁⠒⠒⠢⢤⣀⡉⢢⢀⣈⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢹⠛⣷⣿⠁⠱⢄⠀⢀⠔⠉⠀⠀⢀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠈⠲⢄⠀⣀⠼⠁⢹⣿⡟⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣧⠀⠀⠀⠈⠁⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢦⡀⠀⠀⠉⠀⠀⠀⢸⣿⠀⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣿⠀⠀⠀⢀⡤⠒⠚⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠒⠤⡀⠀⠀⠀⣌⣿⠀⣻⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣼⣀⣿⣯⣇⠀⠀⠘⣆⠀⠀it does stuff.  ⢀⠇⠀⠀⢠⣿⣿⣀⣸⡀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣾⣿⣯⣿⠻⡝⢦⡀⠀⠈⠑⢤⣀⣀⣀⡴⠀⠀⠀⠀⠀⠀⢢⣀⣀⣀⣠⠔⠁⠀⠀⣰⢿⠟⢻⣩⣿⣿⡄⠀⠀⠀⠀⠀\n⣖⣶⣾⣿⣿⣿⣿⣿⡟⣧⠀⠈⠲⣝⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⢞⡷⠁⠀⢸⡿⣾⣿⣭⣿⣿⣷⣶⣶\n⡟⣉⣉⡁⢸⣿⣿⣿⣹⡿⣄⠀⠀⠈⠢⣉⠲⢄⡀⠀⢀⠔⢋⣉⣉⣉⣉⣉⠲⣄⠀⢀⣠⠖⢋⠴⠋⠀⠀⢠⡿⣿⣽⣿⣿⣿⣋⣉⣙⣿\n⣩⣿⣿⣿⣿⣛⣿⢿⣦⣀⣿⡧⣄⠀⠀⠈⠙⠒⠬⣙⣳⣶⣟⣾⣷⣲⣿⣿⣷⣞⣋⠩⠔⠊⠁⠀⠀⢀⠴⣿⣄⣠⡿⢿⣟⣿⣿⣿⣿⣽\n⡿⠏⠁⠀⠀⠀⠀⠀⣘⣿⣿⣿⣮⡳⡄⠀⠀⠀⠀⠀⠈⠙⣿⠉⠉⠉⠉⢹⡏⠁⠀⠀⠀⠀⠀⢀⢔⣡⣾⣿⣿⣏⠀⠀⠀⠀⠀⠀⠉⠿\n⣁⣀⣠⣤⣴⣾⣿⡉⠀⣿⠙⢿⣿⣽⣟⠄⠀⠀⠀⠀⣠⣴⣿⣄⣀⣀⣀⣸⣧⣄⠀⠀⠀⠀⠀⢿⣿⣿⣿⠟⡿⠈⠉⣷⣶⣦⣤⣄⣀⣀\n⢉⣿⣿⣟⣿⣿⣿⣷⡀⠘⡄⠀⢻⡿⣟⠀⠀⠀⣠⠞⠁⡏⠉⠉⠉⠉⠉⠉⢹⠇⠑⢄⠀⠀⠀⣨⣿⡟⠁⠀⡗⢀⣴⣿⣿⣿⣿⣿⣾⣿\n⡸⢿⣿⣿⣀⣤⣿⣟⣻⠄⠃⠀⢸⡇⠉⠻⢿⣏⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⣩⣴⠟⠋⠀⡇⠀⣸⠁⢾⡛⠻⠥⣀⣽⣿⡿⢻\n⠑⣤⣉⠤⠜⠛⠉⠁⠀⠀⠘⡄⢸⡇⠀⣤⠾⠋⠑⢄⠀⢣⠀⠀⠀⠀⠀⠀⢸⠀⣠⠞⠙⠻⣦⡀⢨⡇⢠⠃⠀⠀⠀⠉⠒⠢⠤⣉⣧⣾\n⣼⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣼⣿⡧⣤⡟⠀⠀⠀⠀⠑⣾⡷⠶⠶⠶⠶⣶⣿⡋⠁⠀⠀⠀⢹⣇⡼⣿⠯⠤⠤⠤⣤⣤⣤⢤⣤⣬⣭⣿\n⠈⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋⠳⣄⣿⡐⣦⣤⣀⣼⡟⠀⠀⠀⠀⠀⠀⠹⣷⢀⣠⣴⢲⣿⣯⠖⠁⠀⠀⠀⠀⣸⣟⣿⠀⣟⢛⣃⢹")
+print("Input the roster for a team of Spartan super-soldiers, including") 
+print("their: \n- name\n- tag(numbers and letters)\n- generation(2-4)\n- armor color\n- weaponry")
+
 for i in range(check_input("How many teams would you like to input? ", (0, (-math.inf, math.inf)))):
     team = [[],[]]
     name = check_input("Name of Fireteam: ", 1)
     team[0] = name
     for i in range(int(check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf))))):
-        team[1].append(Spartan(name))
+        team[1].append(Spartan())
     all.append(team)
 
 for i in all:
