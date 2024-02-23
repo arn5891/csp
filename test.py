@@ -54,12 +54,15 @@ all = []
 print("Welcome to Halo Fireteam Generator.\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠖⠋⠁⢀⡟⢿⠛⠛⠛⠋⠉⠉⠉⠛⢻⠛⡆⠀⠉⠒⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢎⣥⡖⠀⢀⣀⣼⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⢳⣀⡀⠀⠰⡦⡙⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠟⠋⠉⠁⢀⡏⠳⣾⠀⠀⠀⠀⠀⠀⠤⠀⢾⠖⠙⡆⠈⠉⠉⠻⣿⣾⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡼⠼⠓⠒⠂⠀⠀⣿⣆⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⣠⡟⠀⠀⠒⠒⠚⠧⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢠⠞⠉⠀⠀⠀⠀⠀⠀⠀⢸⠀⠹⡧⣤⣤⣤⣤⣤⣤⣤⣤⡤⡟⠁⣇⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣀⣤⣴⠶⠶⠛⠛⠛⠯⢽⡾⠿⠿⢿⣿⣿⣿⣿⣿⢿⣿⣷⠾⠿⠛⠛⠻⠶⠶⣦⣤⣀⠀⢳⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀ ⠀⠀⠀⣸⠾⠿⣥⣤⠤⠔⠒⠒⠂⠈⠉⠉⢉⠉⡀⠈⠉⠉⠉⠉⢉⣉⣉⠉⡀⠐⠒⠒⠲⠦⢤⣬⠿⠽⢾⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⢰⡇⠀⡰⠋⣀⣤⠄⠒⠒⠊⢉⡩⠥⠀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⢍⡉⠁⠒⠒⠢⢤⣀⡉⢢⢀⣈⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢹⠛⣷⣿⠁⠱⢄⠀⢀⠔⠉⠀⠀⢀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠈⠲⢄⠀⣀⠼⠁⢹⣿⡟⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣧⠀⠀⠀⠈⠁⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢦⡀⠀⠀⠉⠀⠀⠀⢸⣿⠀⣿⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⢸⠀⣿⣿⠀⠀⠀⢀⡤⠒⠚⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠒⠤⡀⠀⠀⠀⣌⣿⠀⣻⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣼⣀⣿⣯⣇⠀⠀⠘⣆⠀⠀it does stuff.  ⢀⠇⠀⠀⢠⣿⣿⣀⣸⡀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣠⣾⣿⣯⣿⠻⡝⢦⡀⠀⠈⠑⢤⣀⣀⣀⡴⠀⠀⠀⠀⠀⠀⢢⣀⣀⣀⣠⠔⠁⠀⠀⣰⢿⠟⢻⣩⣿⣿⡄⠀⠀⠀⠀⠀\n⣖⣶⣾⣿⣿⣿⣿⣿⡟⣧⠀⠈⠲⣝⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⢞⡷⠁⠀⢸⡿⣾⣿⣭⣿⣿⣷⣶⣶\n⡟⣉⣉⡁⢸⣿⣿⣿⣹⡿⣄⠀⠀⠈⠢⣉⠲⢄⡀⠀⢀⠔⢋⣉⣉⣉⣉⣉⠲⣄⠀⢀⣠⠖⢋⠴⠋⠀⠀⢠⡿⣿⣽⣿⣿⣿⣋⣉⣙⣿\n⣩⣿⣿⣿⣿⣛⣿⢿⣦⣀⣿⡧⣄⠀⠀⠈⠙⠒⠬⣙⣳⣶⣟⣾⣷⣲⣿⣿⣷⣞⣋⠩⠔⠊⠁⠀⠀⢀⠴⣿⣄⣠⡿⢿⣟⣿⣿⣿⣿⣽\n⡿⠏⠁⠀⠀⠀⠀⠀⣘⣿⣿⣿⣮⡳⡄⠀⠀⠀⠀⠀⠈⠙⣿⠉⠉⠉⠉⢹⡏⠁⠀⠀⠀⠀⠀⢀⢔⣡⣾⣿⣿⣏⠀⠀⠀⠀⠀⠀⠉⠿\n⣁⣀⣠⣤⣴⣾⣿⡉⠀⣿⠙⢿⣿⣽⣟⠄⠀⠀⠀⠀⣠⣴⣿⣄⣀⣀⣀⣸⣧⣄⠀⠀⠀⠀⠀⢿⣿⣿⣿⠟⡿⠈⠉⣷⣶⣦⣤⣄⣀⣀\n⢉⣿⣿⣟⣿⣿⣿⣷⡀⠘⡄⠀⢻⡿⣟⠀⠀⠀⣠⠞⠁⡏⠉⠉⠉⠉⠉⠉⢹⠇⠑⢄⠀⠀⠀⣨⣿⡟⠁⠀⡗⢀⣴⣿⣿⣿⣿⣿⣾⣿\n⡸⢿⣿⣿⣀⣤⣿⣟⣻⠄⠃⠀⢸⡇⠉⠻⢿⣏⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⣩⣴⠟⠋⠀⡇⠀⣸⠁⢾⡛⠻⠥⣀⣽⣿⡿⢻\n⠑⣤⣉⠤⠜⠛⠉⠁⠀⠀⠘⡄⢸⡇⠀⣤⠾⠋⠑⢄⠀⢣⠀⠀⠀⠀⠀⠀⢸⠀⣠⠞⠙⠻⣦⡀⢨⡇⢠⠃⠀⠀⠀⠉⠒⠢⠤⣉⣧⣾\n⣼⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣼⣿⡧⣤⡟⠀⠀⠀⠀⠑⣾⡷⠶⠶⠶⠶⣶⣿⡋⠁⠀⠀⠀⢹⣇⡼⣿⠯⠤⠤⠤⣤⣤⣤⢤⣤⣬⣭⣿\n⠈⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋⠳⣄⣿⡐⣦⣤⣀⣼⡟⠀⠀⠀⠀⠀⠀⠹⣷⢀⣠⣴⢲⣿⣯⠖⠁⠀⠀⠀⠀⣸⣟⣿⠀⣟⢛⣃⢹")
 print("Input the roster for a team of Spartan super-soldiers, including") 
 print("their: \n- name\n- tag(numbers and letters)\n- generation(2-4)\n- armor color\n- weaponry")
-
+#line 59 cut off in pdf. check_input() is called in line 59 like so:
+#check_input("How many teams would you like to input? ", (0, (-math.inf, math.inf)))
 num_teams = check_input("How many teams would you like to input? ", (0, (-math.inf, math.inf)))
 for i in range(num_teams):
     team = [[],[]]
     name = check_input("Name of Fireteam: ", 1)
     team[0] = name
+    #line 66 cut off in pdf. check_input() is called in line 66 like so:
+    #check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf)))
     num_spartans = check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf)))
     for i in range(num_spartans):
         team[1].append(Spartan())
