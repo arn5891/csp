@@ -1,0 +1,55 @@
+2
+Blue
+4
+John
+117
+2
+Green
+MA5B Assault Rifle
+Fred
+104
+2
+Teal
+DMR
+Linda
+058
+2
+Gray
+Sniper Rifle
+Kelly
+087
+2
+Blue
+Shotgun
+Noble
+6
+Carter
+A259
+3
+Blue
+MA37 Assault Rifle
+Catherine
+B320
+3
+Teal
+Magnum
+Emile
+A239
+3
+Gray
+Shotgun
+Jorge
+052
+2
+Yellow/Green/Red
+M247H Heavy Machine Gun
+Jun
+A266
+3
+Green
+Sniper Rifle
+Spartan
+B312
+3
+Gray
+MA37 Assault Rifle
