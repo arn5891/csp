@@ -61,8 +61,7 @@ for i in range(num_teams):
     team = [[],[]]
     name = check_input("Name of Fireteam: ", 1)
     team[0] = name
-    num_spartans = check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf)))
-    for i in range(num_spartans):
+    for i in range(check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf)))):
         team[1].append(Spartan())
     all.append(team)
 
@@ -70,26 +69,19 @@ for i in all:
     
     print(f"\nRoster for {i[0]} Team:")
     for j in i[1]:
-        print(f"{j[0]}-{j[1]} is a Spartan-{j[2]}.")
-        print(f"Their armor color is {j[3]} and they carry a {j[4]}.")
+        print(f"{j[0]}-{j[1]} is a Spartan-{j[2]}. Their armor color is {j[3]} and they carry a {j[4]}.")
 
     if get_average(i[1], 2)[1] == 1:
-        print(f"\nNo spartans in {i[0]} Team share generations.")
+        print(f"No spartans in {i[0]} Team share generations.")
     else:
-        common_gen = get_average(i[1], 2)[0]
-        print(f"\nMost common generation for spartans in {i[0]} Team is {common_gen}.")
-        print(f"{get_average(i[1], 2)[1]} Spartans have it.")
+        print(f"\nMost common generation for spartans in {i[0]} Team is {get_average(i[1], 2)[0]}\n{get_average(i[1], 2)[1]} Spartans have it.")
     
     if get_average(i[1], 3)[1] == 1:
-        print(f"\nNo spartans in {i[0]} Team share armor colors.")
+        print(f"No spartans in {i[0]} Team share armor colors.")
     else:
-        common_color = get_average(i[1], 3)[0]
-        print(f"\nMost common armor color for {i[0]} Team is {common_color}.")
-        print(f"{get_average(i[1], 3)[1]} Spartans have it.")
+        print(f"\nMost common armor color for {i[0]} Team is {get_average(i[1], 3)[0]}\n{get_average(i[1], 3)[1]} Spartans have it.")
     
     if get_average(i[1], 4)[1] == 1:
-        print(f"\nNo spartans in {i[0]} Team share common weapons.")
+        print(f"No spartans in {i[0]} Team share common weapons.")
     else:
-        common_wep = get_average(i[1], 4)[0]
-        print(f"\nMost common weapon of choice in {i[0]} Team is {common_wep}.")
-        print(f"{get_average(i[1], 4)[1]} Spartans have it.")
+        print(f"\nMost common weapon of choice in {i[0]} Team is {get_average(i[1], 4)[0]}\n{get_average(i[1], 4)[1]} Spartans have it.")
