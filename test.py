@@ -59,8 +59,7 @@ print("their: \n- name\n- tag(numbers and letters)\n- generation(2-4)\n- armor c
 num_teams = check_input("How many teams would you like to input? ", (0, (-math.inf, math.inf)))
 for i in range(num_teams):
     team = [[],[]]
-    name = check_input("Name of Fireteam: ", 1)
-    team[0] = name
+    team[0] = check_input("Name of Fireteam: ", 1)
     for i in range(check_input(f"How many Spartans are in {team[0]} Team? ",(0, (-math.inf, math.inf)))):
         team[1].append(Spartan())
     all.append(team)
