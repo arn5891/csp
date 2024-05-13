@@ -48,7 +48,15 @@ def Spartan():
     generation = check_input("Input generation of Spartan(2-4): ", (0,(2,4)))
     color = check_input("Input armor color of Spartan: ", 1)
     weapon = check_input("Spartan's weapon of choice: ", 1)
-    return (name, tag, gens[generation-2], color, weapon)
+    return Spartan(name, tag, gens[generation-2], color, weapon)
+class Spartan():
+    def __init__(self, name, tag, generation, color, weapon) -> None:
+        self.name = name
+        self.tag = tag
+        self.generation = generation
+        self.color = color
+        self.weapon = weapon
+    
 
 all = []
 print("Welcome to Halo Fireteam Generator.")
