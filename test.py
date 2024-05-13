@@ -1,22 +1,38 @@
 #all_teams code written by AN unless stated otherwise
 import math
 gens = ("II", "III", "IV")
-def get_average(lst, ind):
-    counts = [["¬", -100]]
-    for j in lst:
-        found = False
-        for i in counts:
-            if j[ind] == i.name or (j[ind] not in gens and (i.name in j[ind])):
-                i.members = i.members+1
-                found = True
-        if found == False:
-            counts.append([j[ind],1])
-            
-    max = ["¬", -100]
-    for i in counts:
-        if i.members > max[1]:
-            max = i
-    return max
+def get_average(member_list, trait):
+    counter = {
+
+    }
+    if(trait == "gen"):
+        for member in member_list:
+            if member.generation in counter:
+                counter[member.generation] += 1
+            else:
+                counter[member.generation] = 1
+    elif(trait == "color"):
+        for member in member_list:
+            if member.weapon in counter:
+                counter[member.weapon] += 1
+            else:
+                counter[member.weapon] = 1
+    #assume weapon
+    else:
+        for member in member_list:
+            if member.weapon in counter:
+                counter[member.weapon] += 1
+            else:
+                counter[member.weapon] = 1
+        
+    max_key = ""
+    for key in counter:
+        if(max_key == ""):
+            max_key = key
+        elif(counter[key] > counter[max_key]):
+            max_key = key
+    return [max_key, counter[max_key]]
+
     
 def check_input(string, spec):
     a = input(string)
@@ -81,17 +97,20 @@ for i in all_teams:
     for member in i.members:
         print(f"{member.name}-{member.tag} is a Spartan-{member.generation}. Their armor color is {member.color} and they carry a {member.weapon}.")
 
-    if get_average(i.members, 2)[1] == 1:
-        print(f"No spartans in {i.name} Team share generations.")
+    average_output = get_average(i.members, "gen")
+    if average_output[1] == 1:
+        print(f"\nNo spartans in {i.name} Team share generations.")
     else:
-        print(f"\nMost common generation for spartans in {i.name} Team is {get_average(i.members, 2)[0]}\n{get_average(i.members, 2)[1]} Spartans have it.")
+        print(f"\nMost common generation for spartans in {i.name} Team is {average_output[0]}\n{average_output[1]} Spartans have it.")
     
-    if get_average(i.members, 3)[1] == 1:
-        print(f"No spartans in {i.name} Team share armor colors.")
+    average_output = get_average(i.members, "color")
+    if average_output[1] == 1:
+        print(f"\nNo spartans in {i.name} Team share armor colors.")
     else:
-        print(f"\nMost common armor color for {i.name} Team is {get_average(i.members, 3)[0]}\n{get_average(i.members, 3)[1]} Spartans have it.")
+        print(f"\nMost common armor color for {i.name} Team is {average_output[0]}\n{average_output[1]} Spartans have it.")
     
-    if get_average(i.members, 4)[1] == 1:
-        print(f"No spartans in {i.name} Team share common weapons.")
+    average_output = get_average(i.members, "weapon")
+    if average_output[1] == 1:
+        print(f"\nNo spartans in {i.name} Team share common weapons.")
     else:
-        print(f"\nMost common weapon of choice in {i.name} Team is {get_average(i.members, 4)[0]}\n{get_average(i.members, 4)[1]} Spartans have it.")
+        print(f"\nMost common weapon of choice in {i.name} Team is {average_output[0]}\n{average_output[1]} Spartans have it.")
