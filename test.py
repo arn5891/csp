@@ -13,10 +13,10 @@ def get_average(member_list, trait):
                 counter[member.generation] = 1
     elif(trait == "color"):
         for member in member_list:
-            if member.weapon in counter:
-                counter[member.weapon] += 1
+            if member.color in counter:
+                counter[member.color] += 1
             else:
-                counter[member.weapon] = 1
+                counter[member.color] = 1
     #assume weapon
     else:
         for member in member_list:
