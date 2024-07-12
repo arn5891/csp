@@ -1,4 +1,4 @@
-#all_teams code written by AN unless stated otherwise
+#all code written by AN unless stated otherwise
 import math
 gens = ("II", "III", "IV")
 def get_average(member_list, trait):
